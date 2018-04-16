@@ -42,6 +42,11 @@ You may also need to use a hot glue gun, depending on your chassis size.
 4. Attach the sensors to each of the boards, with the parts facing outward. 
 5. Connect thw wires as seen in the following image: 
 
+![alt text][pic2]
+
+[pic2]: https://github.com/loopingtangent/CS207majorProject/blob/master/img/figg-circuit.jpg "Picture of F.I.G.G.'s Circuit Diagram"
+
+
 6. Connect the Motor Shield to the Arduino, and the motors to the shield. Connect the power source as well. 
 7. Upload the program in /src/MainProgram.ino to the Arduino. (be sure to have the Ada Fruit AFMotor library installed)
 8. Insert batteries and enjoy!
