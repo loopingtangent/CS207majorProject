@@ -1,8 +1,11 @@
-/* Code Written by Roy Pe'er. I've explained all the code in the grey comments.
+/* Original Code Written by Roy Pe'er. I've explained all the code in the grey comments.
 I recommend you to go over the code, examine it, play with it, improve it and modify it according to your needs. 
 For more awesome videos, subsrice to my channel:
 http://www.youtube.com/subscription_center?add_user=Roypeer1
 */
+
+/* Code Modifications by Samantha Rodgers. I recomment that you don't use this code as it is set up for two motors 
+that both go the same direction. It basically had to be broken in order for it to work. */
 
 #include <AFMotor.h> //import your motor shield library
 #define trigPin 13 // define the pins of your sensor
@@ -20,7 +23,7 @@ void setup() {
   pinMode(trigPin2, OUTPUT); //*
   pinMode(echoPin2, INPUT);
   motor1.setSpeed(105); //set the speed of the motors, between 0-255
-  motor2.setSpeed(125);  
+  motor2.setSpeed(125);  //* an attempt to even the speed of the motors given backwards and forwards have different speeds
 }
  
 void loop() {
@@ -33,26 +36,26 @@ void loop() {
   delayMicroseconds(2); // delays are required for a succesful sensor operation.
   digitalWrite(trigPin, HIGH);
 
-  digitalWrite(trigPin2, LOW);
+  digitalWrite(trigPin2, LOW); //* new things
   delayMicroseconds(2);
   digitalWrite(trigPin2, HIGH);
 
   delayMicroseconds(10); //this delay is required as well!
   digitalWrite(trigPin, LOW);
 
-  delayMicroseconds(10);
+  delayMicroseconds(10); //* new things
   digitalWrite(trigPin2, LOW);
   
   duration = pulseIn(echoPin, HIGH);
-  duration2 = pulseIn(echoPin2, HIGH);
-  Serial.print("Dur: ");
+  duration2 = pulseIn(echoPin2, HIGH); //* new things
+  Serial.print("Dur: "); //* attempt to figure out why FIGG wasn't turning
   Serial.print(duration2);
   
   distance = (duration/2) / 29.1;// convert the distance to centimeters.
-  distance2 = (duration2/2) / 29.1;
+  distance2 = (duration2/2) / 29.1; //*
   Serial.print("D1 ");
   Serial.print(distance);
-  Serial.print("  D2 ");
+  Serial.print("  D2 "); //* Another attempt to figure out why FIGG wasn't working
   Serial.print(distance2); 
   
   if (distance < 25)/*if there's an obstacle 25 centimeters, ahead, do the following: */ 
